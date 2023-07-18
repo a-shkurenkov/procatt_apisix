@@ -1,0 +1,8 @@
+# My ignore
+.terraform*
+*.tfstate
+*.tfvars
+*.backup
+*.swp
+inventory.yml
+.vault_pass
