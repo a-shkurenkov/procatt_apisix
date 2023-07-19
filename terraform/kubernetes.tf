@@ -29,7 +29,8 @@ resource "yandex_kubernetes_node_group" "node-group-0" {
     platform_id = "standard-v1"
 
     network_interface {
-      nat = true
+      nat        = true
+      subnet_ids = [yandex_vpc_subnet.internal-a.id]
     }
 
     resources {
@@ -40,7 +41,7 @@ resource "yandex_kubernetes_node_group" "node-group-0" {
 
     boot_disk {
       type = "network-hdd"
-      size = 20
+      size = 30
     }
 
     scheduling_policy {

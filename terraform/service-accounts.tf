@@ -18,7 +18,7 @@ resource "yandex_resourcemanager_folder_iam_binding" "editor" {
   ]
 
   depends_on = [
-    "yandex_iam_service_account.instances-editor"
+    yandex_iam_service_account.instances-editor
   ]
 }
 
@@ -32,7 +32,7 @@ resource "yandex_resourcemanager_folder_iam_binding" "pusher" {
   ]
 
   depends_on = [
-    "yandex_iam_service_account.docker-registry"
+    yandex_iam_service_account.docker-registry
   ]
 }
 
