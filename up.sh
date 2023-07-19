@@ -6,3 +6,4 @@ tend=`date +%s.%N`
 truntime=$( echo "$tend - $tstart" | bc -l )
 echo -e "\nTerraform execution time: $(date -d @$truntime -u +%H:%M:%S.%N)"
 
+yc container cluster get-credentials kub-test --external
