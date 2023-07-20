@@ -1,0 +1,71 @@
+service:
+  type: LoadBalancer
+  tls:
+    containerPort: 9443
+
+ingress-controller:
+  enabled: true
+  config:
+    apisix:
+      serviceNamespace: ingress-apisix
+
+apisix:
+  ssl:
+    enabled: true
+
+  prometheus:
+    enabled: true
+
+  pluginAttrs:
+    prometheus:
+      enable_export_server: true
+      export_uri: /metrics
+  
+  plugins:
+    - api-breaker
+    - authz-keycloak
+    - basic-auth
+    - batch-requests
+    - consumer-restriction
+    - cors
+    - echo
+    - fault-injection
+    - file-logger
+    - grpc-transcode
+    - hmac-auth
+    - http-logger
+    - ip-restriction
+    - ua-restriction
+    - jwt-auth
+    - kafka-logger
+    - key-auth
+    - limit-conn
+    - limit-count
+    - limit-req
+    - node-status
+    - openid-connect
+    - authz-casbin
+    - proxy-cache
+    - proxy-mirror
+    - proxy-rewrite
+    - redirect
+    - referer-restriction
+    - request-id
+    - request-validation
+    - response-rewrite
+    - serverless-post-function
+    - serverless-pre-function
+    - sls-logger
+    - syslog
+    - tcp-logger
+    - udp-logger
+    - uri-blocker
+    - wolf-rbac
+    - zipkin
+    - traffic-split
+    - gzip
+    - real-ip
+    - ext-plugin-pre-req
+    - ext-plugin-post-req
+    - prometheus
+    - public-api

@@ -1,0 +1,15 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: prometheus-route
+spec:
+  http:
+  - name: prometheus-dashboard
+    match:
+      hosts:
+      - test.prometheus.org
+      paths:
+      - /*
+    backends:
+    - serviceName: prometheus-stack-kube-prom-prometheus
+      servicePort: 9090

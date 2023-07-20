@@ -1,0 +1,18 @@
+---
+- name: Deploy API
+  kubernetes.core.k8s:
+    src: deployment.yaml
+    namespace: default
+    state: present
+
+- name: Configure service
+  kubernetes.core.k8s:
+    src: service.yaml
+    namespace: default
+    state: present
+
+- name: Configure route to API
+  kubernetes.core.k8s:
+    src: api-route.yaml
+    namespace: default
+    state: present

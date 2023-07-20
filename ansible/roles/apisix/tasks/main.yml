@@ -1,0 +1,31 @@
+---
+- name: Add apisix helm repository
+  kubernetes.core.helm_repository:
+    name: apisix
+    repo_url: https://charts.apiseven.com
+
+- name: Deploy apisix
+  kubernetes.core.helm:
+    name: apisix
+    chart_ref: apisix/apisix
+    release_namespace: ingress-apisix
+    create_namespace: true
+    values: "{{ lookup('file', 'values.yaml') | from_yaml }}"
+
+- name: Enable apisix prometheus metrics
+  kubernetes.core.k8s:
+    src: config.yaml
+    state: present
+
+- name: Enable apisix prometheus monitoring
+  kubernetes.core.k8s:
+    src: monitor.yaml
+    namespace: ingress-apisix
+    state: present
+
+- name: Configure route to prometheus
+  kubernetes.core.k8s:
+    src: prometheus-route.yaml
+    namespace: monitoring 
+    state: present
+

@@ -1,0 +1,8 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixClusterConfig
+metadata:
+  name: default
+spec:
+  monitoring:
+    prometheus:
+      enable: true

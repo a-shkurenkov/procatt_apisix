@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dummy-api-svc
+  labels:
+    app.kubernetes.io/name: go-rest-api
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: api-port
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: go-rest-api
