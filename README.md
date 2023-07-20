@@ -44,5 +44,5 @@ Open [http://test.prometheus.org](http://test.prometheus.org/) in your browser.
 ```
 $ ./down.sh
 ```
-Remove test.prometheus.org record from your */etc/hosts*
+Remove **test.prometheus.org** record from your */etc/hosts*
 
